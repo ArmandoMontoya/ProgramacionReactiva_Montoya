@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 export interface Alumno {
   numeroControl: string;
@@ -34,15 +34,25 @@ export class ReactivosService {
     {numeroControl: '78592442', nombre: 'Octavio', apellidoPaterno: 'Ramirez', apellidoMaterno: 'Vargas', fechaNacimiento: new Date(1995, 4, 10), curp: 'kjkyter4784', sexo: 'M', direccion: 'skdfsfjskf', contacto: 'Cesar Ramirez', numeroContacto: '5474121' }
   ];
 
-  AlumnosObservable: Observable<Alumno[]>;
+  profesores: any = [
+    {id: 1, curso: 'Matemáticas', nombre: 'Matias González'},
+    {id: 2, curso: 'Física', nombre: 'Angelica Perez'},
+    {id: 3, curso: 'Biología', nombre: 'Pedro Fernandez'},
+    {id: 4, curso: 'Español', nombre: 'Pablo Cervera'},
+    {id: 5, curso: 'Programación', nombre: 'Antonio Aguilera'},
+    {id: 6, curso: 'Redes', nombre: 'Margarita Díaz'},
+  ]
 
   constructor() {
-    this.AlumnosObservable = new Observable<Alumno[]>((suscriptor) => {
-      suscriptor.next(this.alumnos);
-    })
   }
 
-  obtenerAlumnos(): Observable<Alumno[]>{
-    return this.AlumnosObservable;
+  obtenerAlumnos():Observable<Alumno[]>{
+    return of(this.alumnos);
   }
+
+  obternerProfesores(){
+    return of(this.profesores)
+  }
+
+
 }

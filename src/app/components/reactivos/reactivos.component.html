@@ -1,5 +1,22 @@
+<h1>Alumnos con sexo Femenino</h1>
 <ul>
-  <li *ngFor="let alumno of alumnos| async">
-      {{alumno.nombre}}
+  <li *ngFor="let alumno of alumnos">
+      Nombre:{{alumno.nombre}} {{alumno.apellidoPaterno}} {{alumno.apellidpMaterno}}
+      <br>
+      Sexo: {{alumno.sexo}}
   <li>
+</ul>
+
+<hr>
+<h1>Alumnos Con fecha mayor a {{fecha | date:'short'}}</h1>
+<pre>Alumnos: {{ alumnosConFechaMayorA | json}}</pre>
+
+<hr>
+
+<h1>Profesores</h1>
+<ul>
+  <li *ngFor="let profesor of profesores | async">
+    <span>{{profesor.nombre}}</span>
+  </li>
+
 </ul>
